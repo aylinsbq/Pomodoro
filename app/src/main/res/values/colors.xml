@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!--Colores Pomodoro App    -->
+    <color name="primary">#FF4238</color>
+    <color name="primary_light">#FF725C</color>
+    <color name="primary_dark">#52B788</color>
+    <color name="secondary">#FF998A</color>
+    <color name="secondary_transparent">#B3FF998A</color>
+    <color name="text_color">#FFEFD6</color>
+
+
+</resources>

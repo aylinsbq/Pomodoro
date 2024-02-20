@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="classic">Classic</string>
+    <string name="save">SAVE</string>
+    <string name="name">Name</string>
+    <string name="short_break">Short Break</string>
+    <string name="long_break">Long Break</string>
+</resources>

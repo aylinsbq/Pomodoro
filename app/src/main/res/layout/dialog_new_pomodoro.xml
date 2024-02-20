@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="620dp"
+    android:backgroundTint="@color/secondary"
+    android:orientation="vertical"
+    app:cardCornerRadius="16dp">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="620dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/DialogNewPomodoroCustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name" />
+
+        <EditText
+            android:id="@+id/etAddName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/text_color"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:textSize="20dp"
+            tools:hint="@string/pomodoro" />
+
+        <TextView
+            style="@style/DialogNewPomodoroCustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pomodoro" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/npPomodoroHours"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npPomodoroMinutes"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npPomodoroSeconds"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/DialogNewPomodoroCustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/short_break" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/npShortBreakHours"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npShortBreakMinutes"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npShortBreakSeconds"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/DialogNewPomodoroCustomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/long_break" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <NumberPicker
+                android:id="@+id/npLongBreakHours"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npLongBreakMinutes"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":"
+                android:textColor="@color/text_color"
+                android:textSize="50sp" />
+
+            <NumberPicker
+                android:id="@+id/npLongBreakSeconds"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:theme="@style/NumberPickerCustomText" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnCreatePomodoro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/langar"
+            android:text="@string/save"
+            android:textColor="@color/text_color"
+            android:textSize="30dp"
+            app:backgroundTint="@color/primary_light" />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

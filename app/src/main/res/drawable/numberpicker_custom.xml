@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style name="NumberPickerCustomText">
+    <item name="android:textSize">22sp</item> // add if you want to change size
+    <item name="android:fontFamily">@font/lato_regular</item> // add font (this font folder is present in res folder)
+</style>
