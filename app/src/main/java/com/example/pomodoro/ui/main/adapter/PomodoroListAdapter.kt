@@ -15,7 +15,7 @@ class PomodoroListAdapter(private var pomodoroList:List<NewPomodoro>):
     override fun getItemCount(): Int = pomodoroList.size
 
     override fun onBindViewHolder(holder: PomodoroListViewHolder, position: Int) {
-        holder.render(pomodoroList[position])
+        holder.render(pomodoroList[position], position)
     }
     fun updateList(list:List<NewPomodoro>){
         pomodoroList = list
