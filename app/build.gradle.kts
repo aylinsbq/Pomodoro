@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("io.realm.kotlin")
 }
 
 android {
@@ -53,5 +54,14 @@ dependencies {
     //DaggerHilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
+    //Realm
+    implementation ("io.realm.kotlin:library-base:1.11.0")
+    //corutines with SDK
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.0")
+    //lifecycle
+    implementation ("androidx.activity:activity-ktx:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+
 
 }

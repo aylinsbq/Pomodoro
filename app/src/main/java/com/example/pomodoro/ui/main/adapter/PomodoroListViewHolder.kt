@@ -5,11 +5,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pomodoro.R
 import com.example.pomodoro.databinding.ItemPomodoroBinding
 import com.example.pomodoro.domain.model.NewPomodoro
+import com.example.pomodoro.domain.model.PomodoroTask
 
 class PomodoroListViewHolder(view: View):RecyclerView.ViewHolder(view) {
     private val binding = ItemPomodoroBinding.bind(view)
-    fun render(newPomodoro: NewPomodoro, position: Int) {
-        binding.btnItemPomodoro.text=newPomodoro.name
+    fun render(pomodoroTask: PomodoroTask, position: Int) {
+        binding.btnItemPomodoro.text=pomodoroTask.name
         if (position==0){
             binding.btnItemPomodoro.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.small_tomato,0)
             binding.btnItemPomodoro.setPadding(170,binding.btnItemPomodoro.paddingTop,170,binding.btnItemPomodoro.paddingBottom)

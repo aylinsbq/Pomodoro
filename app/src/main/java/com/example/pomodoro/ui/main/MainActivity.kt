@@ -6,36 +6,29 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.NumberPicker
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.DialogNewPomodoroBinding
 import com.example.pomodoro.domain.model.NewPomodoro
+import com.example.pomodoro.domain.model.PomodoroTask
 import com.example.pomodoro.domain.model.Timer
 import com.example.pomodoro.ui.main.adapter.PomodoroListAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val listOfPomodoro = mutableListOf(
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Study", Timer(0, 30), Timer(0, 7), Timer(0, 20)),
-        /*NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),
-        NewPomodoro("Classic", Timer(0, 25), Timer(0, 5), Timer(0, 15)),*/
-    )
-    private lateinit var pomodoroListAdapter: PomodoroListAdapter
+    private val viewModel:MainViewModel by viewModels()
+
+    private  var pomodoroListAdapter: PomodoroListAdapter= PomodoroListAdapter()
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +44,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initList() {
-        pomodoroListAdapter = PomodoroListAdapter(listOfPomodoro)
+        lifecycleScope.launch {
+            viewModel.pomodoroTasks.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect{
+                    pomodoroListAdapter.updateList(it)
+                }
+        }
         binding.rvListPomodoro.layoutManager = LinearLayoutManager(this)
         binding.rvListPomodoro.adapter=pomodoroListAdapter
     }
@@ -96,11 +94,8 @@ class MainActivity : AppCompatActivity() {
             val minLongBreak = dialogBind.npLongBreakMinutes.value
             val secLongBreak = dialogBind.npLongBreakSeconds.value
             val longBreak = Timer(hourLongBreak, minLongBreak, secLongBreak)
-
-            val newPomodoro = NewPomodoro(nameNewPomodoro, pomodoro, shortBreak, longBreak)
-            listOfPomodoro.add(newPomodoro)
-            Log.i("Beach","$listOfPomodoro")
-            pomodoroListAdapter.updateList(listOfPomodoro)
+            val newPomodoro = PomodoroTask(nameNewPomodoro, pomodoro, shortBreak, longBreak)
+            viewModel.createPomodoroTask(newPomodoro)
             dialog.hide()
         }
         dialog.show()
