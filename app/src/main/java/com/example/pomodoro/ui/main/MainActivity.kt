@@ -1,36 +1,36 @@
 package com.example.pomodoro.ui.main
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.widget.NumberPicker
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.DialogNewPomodoroBinding
-import com.example.pomodoro.domain.model.NewPomodoro
 import com.example.pomodoro.domain.model.PomodoroTask
 import com.example.pomodoro.domain.model.Timer
 import com.example.pomodoro.ui.main.adapter.PomodoroListAdapter
+import com.example.pomodoro.ui.timer.TimerActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val viewModel:MainViewModel by viewModels()
-
-    private  var pomodoroListAdapter: PomodoroListAdapter= PomodoroListAdapter()
-
+    companion object {
+        const val ID_POMODORO = "ID_POMODORO"
+    }
     private lateinit var binding: ActivityMainBinding
+    private val viewModel:MainViewModel by viewModels()
+    private lateinit var pomodoroListAdapter: PomodoroListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initList() {
+        pomodoroListAdapter= PomodoroListAdapter(onitemSelected = {
+            intent = Intent(this, TimerActivity::class.java)
+            intent.putExtra(ID_POMODORO, it.toString())
+            startActivity(intent)
+        })
         lifecycleScope.launch {
             viewModel.pomodoroTasks.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect{

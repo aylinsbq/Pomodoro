@@ -18,6 +18,5 @@ object DaggerHiltModule {
     fun providesRealmDatabase(): Realm {
         val config = RealmConfiguration.create(schema = setOf(PomodoroTask::class, Timer::class))
         return Realm.open(config)
-
     }
 }

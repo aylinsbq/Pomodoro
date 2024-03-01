@@ -10,6 +10,7 @@ import io.realm.kotlin.Realm
 import io.realm.kotlin.UpdatePolicy
 import io.realm.kotlin.ext.query
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(realmDataBase: Realm) : ViewModel() {
     private val realm = realmDataBase
 
-    val pomodoroTasks = realm.query<PomodoroTask>()
+    val pomodoroTasks: StateFlow<List<PomodoroTask>> = realm.query<PomodoroTask>()
         .asFlow()
         .map { results -> results.list.toList() }
         .stateIn(
@@ -29,6 +30,7 @@ class MainViewModel @Inject constructor(realmDataBase: Realm) : ViewModel() {
         )
 
     init {
+        //deleteAllRealm()
         if (realm.query<PomodoroTask>().find().isEmpty()) {
             createInitEntries()
         }
@@ -48,6 +50,14 @@ class MainViewModel @Inject constructor(realmDataBase: Realm) : ViewModel() {
                 longBreakTimer.pomodoro = pomodoroClassic
 
                 copyToRealm(pomodoroClassic, updatePolicy = UpdatePolicy.ALL)
+
+            }
+        }
+    }
+    private fun deleteAllRealm() {
+        viewModelScope.launch {
+            realm.write {
+                deleteAll()
 
             }
         }
