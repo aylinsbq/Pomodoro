@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/pomodoroTimerFragment"
+        android:icon="@drawable/ic_pomodoro"
+        android:title="@string/pomodoro"/>
+    <item
+        android:id="@+id/shortBreakTimerFragment"
+        android:icon="@drawable/ic_short_break"
+        android:title="@string/short_break" />
+    <item
+        android:id="@+id/longBreakTimerFragment"
+        android:icon="@drawable/ic_long_break"
+        android:title="@string/long_break" />
+</menu>

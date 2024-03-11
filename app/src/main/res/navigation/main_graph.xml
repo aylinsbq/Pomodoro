@@ -10,4 +10,14 @@
         android:name="com.example.pomodoro.ui.timer.pomodoro.PomodoroTimerFragment"
         android:label="fragment_pomodoro_timer"
         tools:layout="@layout/fragment_pomodoro_timer" />
+    <fragment
+        android:id="@+id/shortBreakTimerFragment"
+        android:name="com.example.pomodoro.ui.timer.shortBreak.ShortBreakTimerFragment"
+        android:label="fragment_short_break_timer"
+        tools:layout="@layout/fragment_short_break_timer" />
+    <fragment
+        android:id="@+id/longBreakTimerFragment"
+        android:name="com.example.pomodoro.ui.timer.longBreak.LongBreakTimerFragment"
+        android:label="fragment_long_break_timer"
+        tools:layout="@layout/fragment_long_break_timer" />
 </navigation>
