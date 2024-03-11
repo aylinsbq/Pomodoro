@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/pomodoroTimerFragment">
+
+    <fragment
+        android:id="@+id/pomodoroTimerFragment"
+        android:name="com.example.pomodoro.ui.timer.pomodoro.PomodoroTimerFragment"
+        android:label="fragment_pomodoro_timer"
+        tools:layout="@layout/fragment_pomodoro_timer" />
+</navigation>
