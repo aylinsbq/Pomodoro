@@ -1,15 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.timer.pomodoro.PomodoroTimerFragment"
-    android:background="@color/text_color">
+    android:background="@color/primary"
+    tools:context=".ui.timer.pomodoro.PomodoroTimerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/circles_decoration_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:rotationY="180"
+        android:src="@drawable/circles_decoration_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:src="@drawable/circles_decoration_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:rotationY="180"
+        android:src="@drawable/circles_decoration_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/circleTittle"
+        android:layout_width="400dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="-175dp"
+        android:background="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="fragment pomodoro" />
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/langar"
+        android:text="@string/pomodoro"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/circleTimer"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="-150dp"
+        android:alpha="1"
+        android:background="@drawable/circle"
+        android:backgroundTint="@color/primary_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleTittle" />
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="00:00:00"
+        android:fontFamily="@font/langar"
+        android:textSize="50sp"
+        android:textColor="@color/text_color"/>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="310dp"
+        android:layout_height="310dp"
+        android:layout_marginTop="-150dp"
+        app:cpb_background_progressbar_color="@color/secondary"
+        app:cpb_background_progressbar_width="30dp"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/primary"
+        app:cpb_progressbar_width="30dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleTittle" />
+
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:backgroundTint="@color/primary_light"
+        android:fontFamily="@font/langar"
+        android:text="@string/play"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,6 +65,8 @@ dependencies {
     //NavComponent
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    //CIrcular progress bar
+    implementation ("com.mikhaellopez:circularprogressbar:3.1.0")
 
 
 }
